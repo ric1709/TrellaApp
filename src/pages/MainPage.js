@@ -1,7 +1,10 @@
 import React from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
-import Cards from './Cards'
-import MainHeader from './MainHeader'
+import { Outlet } from 'react-router-dom'
+import  { createGlobalStyle } from 'styled-components'
+import Cards from '../components/Main/Cards'
+
+
+
 
 const StyledMainPage = createGlobalStyle`
     body{
@@ -14,14 +17,15 @@ const StyledMainPage = createGlobalStyle`
     
 `
 
-function MainPage(props) {
+function MainPage() {
 	return (
 		<>
 			<StyledMainPage />
-			<MainHeader />
+            <Outlet/>
             <Cards/>
+            
 		</>
 	)
 }
 
-export default MainPage
+export default MainPage;

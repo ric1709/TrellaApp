@@ -13,7 +13,7 @@ function Card(props) {
 	}
 	return (
 		<StyledCards key={props.id}>
-			{changeCaption && <ModalCard cancel={setChangeCaption} />}
+			{changeCaption && <ModalCard  cancel={setChangeCaption} />}
 			<div>
 				<textarea
 					className='text1'

@@ -1,15 +1,24 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { cardActions } from '../../store/addCard'
+import { useCustomPrompt } from '../../hooks/useCustomPrompt'
+import { addData, cardActions } from '../../store/addCard'
+import ConfirmModal from '../../ui/ConfirmModal'
 import Card from './Card'
 
 function Cards() {
+	const navigate = useNavigate()
 	const [clicked, setClicked] = useState(false)
 	const [added, setAdded] = useState(false)
 	const dispatch = useDispatch()
 	const [data, setData] = useState('')
 	const column = useSelector((state) => state.addCard)
+	const [showModal, setShowModal] = useState(false)
+	const [showPrompt, confirmNavigation, cancelNavigation] =
+		useCustomPrompt(showModal)
+
 
 	const onClickHandler = () => {
 		setClicked(true)
@@ -20,7 +29,12 @@ function Cards() {
 	const onAddColumn = (e) => {
 		setData(e.target.value)
 	}
-	
+	useEffect(()=>{
+		if(data.trim().length > 0){
+			setShowModal(true)
+		}
+	},[data])
+
 	const onAddColumnHandler = () => {
 		if (data.trim().length > 0) {
 			const columnData = {
@@ -36,6 +50,7 @@ function Cards() {
 	}
 	return (
 		<CardAdder>
+			{showPrompt && <ConfirmModal confirm={confirmNavigation} cancel={cancelNavigation}/>}
 			{added &&
 				column.map((el) => (
 					<Card

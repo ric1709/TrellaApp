@@ -1,15 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 
 function Caption(props) {
-	const onChange=()=>{
+	const navigate=useNavigate()
+	const onChange=(id,title)=>{
 		props.change(prev=>!prev)
+		// navigate(`tasks/${id}/${title}` )
 	}
 	return (
 		<StyledCaption>
 			{props.tasks.map((el) => (
-				<div key={el.id} onClick={onChange}>
+				<div key={el.id} onClick={() => onChange(el.id,el.text)}>
 					<label>{el.text}</label>
 				</div>
 			))}

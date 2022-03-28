@@ -1,9 +1,8 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import Header from './Header'
-import LoginForm from './LoginForm'
-import UserHelper from './UserHelper'
+import Header from '../components/Login/Header'
+import LoginForm from '../components/Login/LoginForm'
+import UserHelper from '../components/Login/UserHelper'
 
 const StyledSection = styled.section`
 	display: flex;
@@ -42,9 +41,7 @@ const StyledSection = styled.section`
 	}
 `
 
-function LoginPage(props) {
-	// const nav=useNavigate()
-	// const navigate=()=>{nav('/Login')}
+function LoginPage() {
 	return (
 		<>
         <Header/>

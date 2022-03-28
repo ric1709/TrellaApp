@@ -1,10 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 function ModalCard(props) {
-	const onCancel=()=>{
+	// const { title } = useParams()
+	const navigate = useNavigate()
+	const onCancel = () => {
 		props.cancel(prev=>!prev)
+		// navigate('/MainPage')
 	}
 
 	return (
@@ -12,7 +16,7 @@ function ModalCard(props) {
 			{ReactDOM.createPortal(
 				<StyledModal>
 					<Header>
-					<h1>Title</h1>
+						<h1>Title</h1>
 					</Header>
 					<Main>
 						<h3>Caption</h3>
@@ -30,7 +34,7 @@ function ModalCard(props) {
 				document.getElementById('modal'),
 			)}
 			{ReactDOM.createPortal(
-				<StyledBackdrop onClick={onCancel}/>,
+				<StyledBackdrop onClick={onCancel} />,
 				document.getElementById('backdrop'),
 			)}
 		</>

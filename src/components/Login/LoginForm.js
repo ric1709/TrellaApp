@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import Button from '../../ui/Button'
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { authActions } from '../../store/auth'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 
 const StyledForm = styled.form`
 	display: flex;
@@ -28,7 +29,7 @@ const StyledForm = styled.form`
 	}
 `
 
-function LoginForm(props) {
+function LoginForm() {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { isInvalid, isAuth } = useSelector((state) => state.auth)
@@ -55,7 +56,7 @@ function LoginForm(props) {
 	}
 	const ButtonNav = () => {
 		if (isAuth === true) {
-			navigate('/MainPage')
+			navigate('/MainPage', { replace: true })
 		}
 	}
 	const onSubmitHandler = (e) => {
@@ -64,6 +65,7 @@ function LoginForm(props) {
 			dispatch(authActions.login(data))
 		} else alert('U didnt fill blanks')
 	}
+
 	return (
 		<StyledForm onSubmit={onSubmitHandler}>
 			{isInvalid && <h3>Email or password is incorrect</h3>}

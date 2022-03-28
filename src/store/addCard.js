@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {  createSlice } from '@reduxjs/toolkit'
 
 const initCardState = []
 
@@ -17,6 +17,9 @@ const addCardSlice = createSlice({
 				}
 			})
 		},
+		clear(state){
+			state.length=0
+		}
 	},
 })
 

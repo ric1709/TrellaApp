@@ -31,6 +31,7 @@ const MainHeader = () => {
 	)
 }
 const HeaderDiv = styled.div`
+	width: 100%;
 	height: 50px;
 	margin: 0 auto;
 	display: flex;
@@ -77,7 +78,7 @@ const HeaderDiv = styled.div`
 	}
 	.search {
 		display: flex;
-        text-align: center;
+		text-align: center;
 		background: #787a79;
 		width: 250px;
 		height: 34px;

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../../ui/Button'
 import { useDispatch } from 'react-redux'
-import { cardActions } from '../../store/addCard'
+import { addTasks, cardActions, fetchTasks } from '../../store/addCard'
 
 function CardList(props) {
 	const dispatch = useDispatch()

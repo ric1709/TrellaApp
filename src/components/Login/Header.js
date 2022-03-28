@@ -26,6 +26,7 @@ function Header(props) {
 					src='https://aid-frontend.prod.atl-paas.net/atlassian-id/front-end/5.0.318/static/media/trello-logo-blue.f7627b3a.svg'
 					alt='Trello Logo'
 				/>
+				
 			</div>
 		</StyledHeader>
 	)
